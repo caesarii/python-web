@@ -1,18 +1,14 @@
-from flask import Flask, current_app, make_response, redirect, abort
+from flask import Flask, current_app, make_response, redirect, abort, render_template
 
 app = Flask(__name__)
-# 获取程序上下文
-app_ctx = app.app_context()
-# 推送上下文
-app_ctx.push()
+
 @app.route('/')
 def index():
-    print('当前程序实例', current_app.name)
-    return '<h1>Hello World!</h1>'
+    return render_template('index.html')
 
 @app.route('/user/<name>')
 def user(name):
-    return '<h1>Hello %s!</h1>' % name
+    return render_template('user.html', name=name)
 
 @app.route('/user/<int:id>')
 def user_id(id):
