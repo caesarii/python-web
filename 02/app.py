@@ -1,8 +1,13 @@
 from flask import Flask
+from flask import current_app
 app = Flask(__name__)
-
+# 获取程序上下文
+app_ctx = app.app_context()
+# 推送上下文
+app_ctx.push()
 @app.route('/')
 def index():
+    print('当前程序实例', current_app.name)
     return '<h1>Hello World!</h1>'
 
 @app.route('/user/<name>')
