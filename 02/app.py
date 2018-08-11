@@ -29,5 +29,10 @@ def not_found():
     res.set_cookie('answer', '42')
     return res
 
+@app.route('/redirect')
+def redirect():
+    res = make_response('redirect to kujiale', 302, {'Location': 'http://www.kujiale.com'})
+    return res
+
 if __name__ == '__main__':
     app.run(debug=True)
