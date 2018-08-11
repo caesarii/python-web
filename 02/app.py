@@ -1,4 +1,4 @@
-from flask import Flask, current_app, make_response, redirect
+from flask import Flask, current_app, make_response, redirect, abort
 app = Flask(__name__)
 # 获取程序上下文
 app_ctx = app.app_context()
@@ -33,6 +33,12 @@ def not_found():
 def redirect_kjl():
     res = redirect('http://www.kujiale.com')
     return res
+
+@app.route('/error/<id>')
+def error(id):
+    if not id:
+        abort(404)
+    return 'This is not Error'
 
 if __name__ == '__main__':
     app.run(debug=True)
