@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import current_app
+from flask import Flask, current_app, make_response
 app = Flask(__name__)
 # 获取程序上下文
 app_ctx = app.app_context()
@@ -22,5 +21,13 @@ def user_id(id):
 @app.route('/bad')
 def bad_request():
     return ('<h1>Bad Request</h1>', 400, {'Content-Type': 'text/json'})
+
+@app.route('/not_found')
+def not_found():
+    res = make_response('<h1>not found</h1>', 404)
+    # 第二个参数必须是字符串
+    res.set_cookie('answer', '42')
+    return res
+
 if __name__ == '__main__':
     app.run(debug=True)
