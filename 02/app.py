@@ -1,4 +1,4 @@
-from flask import Flask, current_app, make_response
+from flask import Flask, current_app, make_response, redirect
 app = Flask(__name__)
 # 获取程序上下文
 app_ctx = app.app_context()
@@ -30,8 +30,8 @@ def not_found():
     return res
 
 @app.route('/redirect')
-def redirect():
-    res = make_response('redirect to kujiale', 302, {'Location': 'http://www.kujiale.com'})
+def redirect_kjl():
+    res = redirect('http://www.kujiale.com')
     return res
 
 if __name__ == '__main__':
