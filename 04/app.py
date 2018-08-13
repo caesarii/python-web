@@ -1,5 +1,6 @@
 from flask import Flask, current_app, make_response, redirect, abort
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hart to guess string'
 
