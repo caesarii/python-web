@@ -1,10 +1,10 @@
-from flask import Flask, current_app, make_response, redirect, abort, render_template
+from flask import Flask, current_app, make_response, redirect, abort, render_template, url_for
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', url_for=url_for)
 
 @app.route('/user/<name>')
 def user(name):
